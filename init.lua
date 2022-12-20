@@ -1,1 +1,2 @@
 require("nzajt")
+require("plugins")
