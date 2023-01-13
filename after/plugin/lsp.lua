@@ -72,7 +72,7 @@ end)
 
 -- solargraph
 lsp.configure('solargraph', {
-  cmd = {'bundle', 'exec', 'solargraph', 'stdio'},
+  cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
   filetypes = { "ruby", "rakefile" },
   settings = {
     solargraph = {
