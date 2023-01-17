@@ -15,10 +15,6 @@ return require('packer').startup(function(use)
   use('tpope/vim-fugitive')
 
   use "terrortylor/nvim-comment"
-  require('nvim_comment').setup(
-    { line_mapping = "<leader>lc", operator_mapping = "<leader>cc", comment_chunk_text_object = "ic" }
-  )
-
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
