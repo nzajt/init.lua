@@ -39,8 +39,8 @@ return require('packer').startup(function(use)
     }
   }
 
-  use("folke/zen-mode.nvim")
-  -- use("github/copilot.vim")
+  use { "github/copilot.vim" }
+
   use({
     'rose-pine/neovim',
     as = 'rose-pine',

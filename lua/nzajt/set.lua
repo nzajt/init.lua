@@ -31,4 +31,7 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "100"
 
+-- add vim option to turn on wrapping
+vim.opt.wrap = true
+
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
