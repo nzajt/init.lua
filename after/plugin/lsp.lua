@@ -5,20 +5,9 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'tsserver',
   'eslint',
-  'sumneko_lua',
+  'lua_ls',
   'rust_analyzer',
-  'solargraph'
-})
-
--- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
-  }
+  'ruby_ls'
 })
 
 local cmp = require('cmp')
@@ -70,22 +59,33 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
--- solargraph
-lsp.configure('solargraph', {
-  cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
+local enabled_features = {
+  "documentHighlights",
+  "documentSymbols",
+  "foldingRanges",
+  "selectionRanges",
+  "semanticHighlighting",
+  "formatting",
+  "codeActions",
+}
+
+-- Ruby LSP
+lsp.configure('ruby-lsp', {
+  cmd = { 'bundle', 'exec', 'ruby-lsp' },
   filetypes = { "ruby", "rakefile" },
-  settings = {
-    solargraph = {
-      autoformat = true,
-      formatting = true,
-      completion = true,
-      diagnostic = true,
-      folding = true,
-      references = true,
-      rename = true,
-      symbols = true
-    }
-  }
+  init_options = { enabledFeatures = enabled_features },
+  settings = {},
+  commands = {
+    FormatRuby = {
+      function()
+        vim.lsp.buf.formatting({
+          name = "ruby_lsp",
+          async = true,
+        })
+      end,
+      description = "Format using ruby-lsp",
+    },
+  },
 })
 
 lsp.setup()
