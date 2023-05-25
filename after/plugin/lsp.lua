@@ -1,3 +1,18 @@
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+local lsp_format_on_save = function(bufnr)
+  vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    group = augroup,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.format()
+      filter = function(client)
+        return client.name == "null-ls"
+      end
+    end,
+  })
+end
+
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
@@ -7,7 +22,8 @@ lsp.ensure_installed({
   'eslint',
   'lua_ls',
   'rust_analyzer',
-  'ruby_ls'
+  'ruby_ls',
+  'pyright'
 })
 
 local cmp = require('cmp')
@@ -87,6 +103,12 @@ lsp.configure('ruby-lsp', {
     },
   },
 })
+
+-- Autoformat on save
+
+lsp.on_attach(function(client, bufnr)
+  lsp_format_on_save(bufnr)
+end)
 
 lsp.setup()
 
