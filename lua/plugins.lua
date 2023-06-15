@@ -44,10 +44,10 @@ return require('packer').startup(function(use)
   use { "github/copilot.vim" }
 
   use({
-    'rose-pine/neovim',
-    as = 'rose-pine',
+    'rebelot/kanagawa.nvim',
+    as = 'kanagawa',
     config = function()
-      vim.cmd('colorscheme rose-pine')
+      vim.cmd('colorscheme kanagawa')
     end
   })
 end)
