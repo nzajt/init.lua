@@ -48,6 +48,9 @@ return require('packer').startup(function(use)
 
   use { "github/copilot.vim" }
 
+  use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
+
   use({
     'rebelot/kanagawa.nvim',
     as = 'kanagawa',
