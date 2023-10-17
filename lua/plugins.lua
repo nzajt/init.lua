@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim',
     requires = {
       { 'nvim-lua/plenary.nvim' },
       { 'BurntSushi/ripgrep' }
@@ -48,7 +48,6 @@ return require('packer').startup(function(use)
 
   use { "github/copilot.vim" }
 
-  use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
 
   use({
