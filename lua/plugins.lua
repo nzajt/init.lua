@@ -50,11 +50,7 @@ return require('packer').startup(function(use)
 
   use('MunifTanjim/prettier.nvim')
 
-  use({
-    'rebelot/kanagawa.nvim',
-    as = 'kanagawa',
-    config = function()
-      vim.cmd('colorscheme kanagawa')
-    end
-  })
+
+  -- Kick ass theme for bad asses
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
 end)
