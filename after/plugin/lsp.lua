@@ -22,6 +22,7 @@ lsp.ensure_installed({
   'eslint',
   'lua_ls',
   'rust_analyzer',
+  'rubocop',
   'ruby_ls',
   'pyright'
 })
@@ -114,4 +115,20 @@ lsp.setup()
 
 vim.diagnostic.config({
   virtual_text = true,
+})
+
+lsp.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['lua_ls'] = { 'lua' },
+    ['rust_analyzer'] = { 'rust' },
+    ['ruby_ls'] = { 'ruby' },
+    ['pyright'] = { 'python' },
+    -- if you have a working setup with null-ls
+    -- you can specify filetypes it can format.
+    -- ['null-ls'] = {'javascript', 'typescript'},
+  }
 })
