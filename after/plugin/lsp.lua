@@ -23,7 +23,7 @@ lsp.ensure_installed({
   'lua_ls',
   'rust_analyzer',
   'rubocop',
-  'ruby_ls',
+  'ruby_lsp',
   'pyright'
 })
 
