@@ -52,5 +52,6 @@ return require('packer').startup(function(use)
 
 
   -- Kick ass theme for bad asses
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
+  --
+  use { 'dasupradyumna/midnight.nvim' }
 end)
