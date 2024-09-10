@@ -8,9 +8,10 @@ null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.diagnostics.rubocop,
     null_ls.builtins.completion.spell,
+    null_ls.builtins.diagnostics.djlint,
+    require("none-ls.code_actions.eslint"),
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
@@ -45,7 +46,6 @@ prettier.setup({
   filetypes = {
     "css",
     "graphql",
-    "html",
     "javascript",
     "javascriptreact",
     "json",

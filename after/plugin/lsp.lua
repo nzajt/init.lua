@@ -1,4 +1,10 @@
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.html",
+  command = "setfiletype htmldjango"
+})
+
 local lsp_format_on_save = function(bufnr)
   vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
   vim.api.nvim_create_autocmd('BufWritePre', {
@@ -124,6 +130,7 @@ lsp.format_on_save({
     ['rust_analyzer'] = { 'rust' },
     ['ruby_ls'] = { 'ruby' },
     ['pyright'] = { 'python' },
+    ['djlint'] = { 'html' }
     -- if you have a working setup with null-ls
     -- you can specify filetypes it can format.
     -- ['null-ls'] = {'javascript', 'typescript'},
